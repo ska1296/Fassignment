@@ -36,8 +36,7 @@ public class EmployeeController {
  
     @GetMapping("/list")
     public Flux<Employee> getAllEmployees() {
-        Flux<Employee> employees = employeeService.getAllEmployees();
-        return employees;
+        return employeeService.getAllEmployees();
     }
  
     @GetMapping("/{id}")
