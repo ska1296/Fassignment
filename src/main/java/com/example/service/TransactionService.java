@@ -1,12 +1,12 @@
 package com.example.service;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.model.Transaction;
+import com.example.repository.InventoryRepository;
 import com.example.repository.TransactionRepository;
 
 import reactor.core.publisher.Flux;
@@ -17,6 +17,9 @@ public class TransactionService {
  
     @Autowired
     TransactionRepository transactionRepository;
+    
+    @Autowired
+    InventoryRepository inventoryRepository;
  
     public void initializeTransactions(List<Transaction> transactions) {
         Flux<Transaction> savedTransactions = transactionRepository.saveAll(transactions);
@@ -34,4 +37,8 @@ public class TransactionService {
     public Mono<Transaction> getTransactionById(int transactionId) {
         return transactionRepository.findById(transactionId);
     }
+
+	public Mono<Transaction> save(Transaction transaction) {
+		return transactionRepository.save(transaction);
+	}
 }

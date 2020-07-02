@@ -3,6 +3,10 @@ package com.example.model;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 
 import com.datastax.driver.core.LocalDate;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 public class Transaction {
 	
@@ -12,21 +16,17 @@ public class Transaction {
 	private int productQuantity;
 	private double pricePerUnit;
 	private boolean bought;
-	private LocalDate orderDate;
 	private boolean received;
-	private LocalDate receivedDate;
 	private int counterPartyId;
 	
-	public Transaction(int productId, int orderId, int productQuantity, double pricePerUnit, boolean bought, LocalDate orderDate, boolean received, LocalDate receivedDate, int counterPartyId) {
+	public Transaction(int productId, int orderId, int productQuantity, double pricePerUnit, boolean bought, boolean received, int counterPartyId) {
 		super();
 		this.productId = productId;
 		this.orderId = orderId;
 		this.productQuantity = productQuantity;
 		this.pricePerUnit = pricePerUnit;
 		this.bought = bought;
-		this.orderDate = orderDate;
 		this.received = received;
-		this.receivedDate = receivedDate;
 		this.counterPartyId = counterPartyId;
 	}
 
@@ -70,28 +70,12 @@ public class Transaction {
 		this.bought = bought;
 	}
 
-	public LocalDate getOrderDate() {
-		return orderDate;
-	}
-
-	public void setOrderDate(LocalDate orderDate) {
-		this.orderDate = orderDate;
-	}
-
 	public boolean isReceived() {
 		return received;
 	}
 
 	public void setReceived(boolean received) {
 		this.received = received;
-	}
-
-	public LocalDate getReceivedDate() {
-		return receivedDate;
-	}
-
-	public void setReceivedDate(LocalDate receivedDate) {
-		this.receivedDate = receivedDate;
 	}
 
 	public int getCounterPartyId() {

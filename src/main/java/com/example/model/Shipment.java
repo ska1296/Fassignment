@@ -11,16 +11,14 @@ public class Shipment {
 	@PrimaryKey
 	private int shipmentId;
 	private boolean incoming;
-	private LocalDate shipmentDate;
 	private int itemQuantity;
 	private int counterPartyId;
 	private int productId;
 	
-	public Shipment(int shipmentId, boolean incoming, LocalDate shipmentDate, int itemQuantity, int counterPartyId, int productId) {
+	public Shipment(int shipmentId, boolean incoming, int itemQuantity, int counterPartyId, int productId) {
 		super();
 		this.shipmentId = shipmentId;
 		this.incoming = incoming;
-		this.shipmentDate = shipmentDate;
 		this.itemQuantity = itemQuantity;
 		this.counterPartyId = counterPartyId;
 		this.productId = productId;
@@ -37,12 +35,6 @@ public class Shipment {
 	}
 	public void setIncoming(boolean incoming) {
 		this.incoming = incoming;
-	}
-	public LocalDate getShipmentDate() {
-		return shipmentDate;
-	}
-	public void setShipmentDate(LocalDate shipmentDate) {
-		this.shipmentDate = shipmentDate;
 	}
 	public int getItemQuantity() {
 		return itemQuantity;
