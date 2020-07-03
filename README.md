@@ -123,3 +123,6 @@ transactions.add(new Transaction(23, 28, 5, 10, true, true, 1));
 transactions.add(new Transaction(11, 30, 89, 22, true, true, 3));
 transactions.add(new Transaction(20, 99, 22, 56, true, true, 4));
 ````
+
+## Link to dummy data:
+- https://docs.google.com/spreadsheets/d/1ae9VxIu-VhEjlnEeJfLCevqW29HW4fKW6Oy5vD4FVTo/edit?usp=sharing
