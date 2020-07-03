@@ -30,15 +30,19 @@ public class TransactionService {
         return transactionRepository.findAll();
     }
  
-    public Flux<Transaction> findByProductId(int age) {
-        return transactionRepository.findByProductId(age);
-    }
- 
     public Mono<Transaction> getTransactionById(int transactionId) {
         return transactionRepository.findById(transactionId);
     }
 
 	public Mono<Transaction> save(Transaction transaction) {
 		return transactionRepository.save(transaction);
+	}
+
+	public Mono<Void> delete(int id) {
+		return transactionRepository.deleteById(id);
+	}
+
+	public Mono<Void> deleteAll() {
+		return transactionRepository.deleteAll();
 	}
 }

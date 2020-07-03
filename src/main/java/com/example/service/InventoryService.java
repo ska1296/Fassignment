@@ -34,4 +34,16 @@ public class InventoryService {
         return inventoryRepository.findById(id);
     }
 
+	public Mono<Inventory> save(Inventory inventory) {
+		return inventoryRepository.save(inventory);
+	}
+
+	public Mono<Void> delete(int id) {
+		return inventoryRepository.deleteById(id);
+	}
+
+	public Mono<Void> deleteAll() {
+		return inventoryRepository.deleteAll();
+	}
+
 }

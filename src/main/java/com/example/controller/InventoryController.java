@@ -6,8 +6,12 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,4 +58,19 @@ public class InventoryController {
 	public Flux<Inventory> getInventoriesFilterByMinQtLessThan(@PathVariable int quantity) {
 		return inventoryService.getInventoriesFilterByMinQuantityToMaintain(quantity);
 	}
+	
+	@PostMapping("/add")
+    public Mono<Object> create(@RequestBody Inventory inventory) {
+    	return inventoryService.save(inventory).map(savedUser -> ResponseEntity.ok(savedUser));
+    }
+    
+    @DeleteMapping("/delete/{id}")
+    public Mono<Void> deleteOne(@RequestBody int id) {
+    	return inventoryService.delete(id);
+    }
+    
+    @DeleteMapping("/delete/all")
+    public Mono<Void> deleteAll() {
+    	return inventoryService.deleteAll();
+    }
 }
